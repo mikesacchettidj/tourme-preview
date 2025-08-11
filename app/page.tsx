@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import {
   Calendar,
   MapPin,
@@ -359,6 +359,7 @@ export default function Page() {
   );
 
   return (
+     <Suspense fallback={<div className="p-4">Loading...</div>}>
     <div>
       {/* Top */}
       <header className="sticky top-0 z-30 border-b border-zinc-200/60 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-zinc-800/60 dark:bg-zinc-950/60">
@@ -472,5 +473,6 @@ export default function Page() {
         .backface-hidden { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
       `}</style>
     </div>
+       </Suspense>
   );
 }
