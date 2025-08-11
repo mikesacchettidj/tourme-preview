@@ -2,13 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --radius: 16px;
-}
-
-body {
-  font-feature-settings: "rlig" 1, "calt" 1;
-}
-
 .perspective { perspective: 1000px; }
 .backface-hidden { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
