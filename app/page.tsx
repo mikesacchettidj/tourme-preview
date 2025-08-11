@@ -10,7 +10,6 @@ import {
   MessageSquare,
   LayoutDashboard,
   BarChart3,
-  FileStack,
   Moon,
   Sun,
   Plus,
@@ -81,7 +80,7 @@ export default function Page() {
           <nav className="mx-4 hidden items-center gap-1 rounded-full bg-zinc-100 p-1 dark:bg-zinc-900 md:flex">
             <TopItem icon={<LayoutDashboard className="h-4 w-4" />} label="Dashboard" />
             <TopItem icon={<Calendar className="h-4 w-4" />} label="Calendar" />
-            <TopItem icon={<FileStack className="h-4 w-4" />} label="Documents" />
+            <TopItem icon={<FileText className="h-4 w-4" />} label="Documents" />
             <TopItem icon={<BarChart3 className="h-4 w-4" />} label="Insights" />
           </nav>
 
