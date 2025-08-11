@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
+import { Suspense} from "react";
 import {
   Calendar,
   MapPin,
