@@ -1,1 +1,1 @@
-// app/shows/[slug]/page.tsx - user's current show detail page (unchanged placeholder)
+// app/shows/[slug]/page.tsx - unchanged
