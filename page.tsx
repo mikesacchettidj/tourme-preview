@@ -1,0 +1,1 @@
+// app/page.tsx - user's current homepage (unchanged placeholder)
