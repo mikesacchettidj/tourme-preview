@@ -1,10 +1,4 @@
-# tour.me — Preview (fixed)
+# tour.me — Complete Preview (0.3.0)
 
-Deployed-friendly preview. Next14 + Tailwind.
-- Suspense wrapper added for useSearchParams runtime.
-- Type deps included in dependencies.
-- Next config ignores type/lint errors during build.
-
-## Deploy on Vercel
-1) Push to GitHub.
-2) Vercel → Add New → Project → Import repo → Deploy.
+Includes slideover → full page, dark mode default with Graphite/Deep Black switch, CSV export, print day sheet.
+Upload to GitHub → Vercel redeploy.

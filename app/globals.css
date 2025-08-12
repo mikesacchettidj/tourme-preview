@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.perspective { perspective: 1000px; }
-.backface-hidden { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.perspective{perspective:1000px}.backface-hidden{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+html.dark.theme-graphite body{background-color:#0f1115}
+html.dark.theme-deep body{background-color:#0a0a0a}
+html.dark.theme-graphite .card-surface{background-color:#0e0f12;border-color:#1f2430}
+html.dark.theme-deep .card-surface{background-color:#0b0b0b;border-color:#202020}
+@media print{.no-print{display:none!important}.print-area{display:block!important}}
