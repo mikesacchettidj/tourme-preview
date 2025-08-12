@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Suspense, useEffect, useState } from "react";
+import Link from "next/link";
 import {
   Calendar,
   MapPin,
@@ -179,13 +180,9 @@ function ShowPanel({ show, onClose }: { show: Show; onClose: () => void }) {
 }
 
 export default function Page() {
-  // 🔘 Toggle Moon/Sun — dark (Graphite) por defecto
   const [isDark, setIsDark] = useState(true);
-
-  // (Opcional) slideover por query ?show=slug
   const [active, setActive] = useState<string | null>(null);
 
-  // Aplicar clase a <html> para graphite / light
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove("theme-graphite", "theme-deep");
@@ -196,7 +193,6 @@ export default function Page() {
     }
   }, [isDark]);
 
-  // Leer ?show= de la URL para abrir slideover
   useEffect(() => {
     const update = () => {
       const p = new URLSearchParams(window.location.search);
@@ -228,10 +224,10 @@ export default function Page() {
                 <LayoutDashboard className="h-4 w-4" />
                 <span>Dashboard</span>
               </button>
-              <button className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800">
+              <Link href="/calendar" className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800">
                 <Calendar className="h-4 w-4" />
                 <span>Calendar</span>
-              </button>
+              </Link>
               <button className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800">
                 <Folder className="h-4 w-4" />
                 <span>Files</span>
@@ -243,7 +239,6 @@ export default function Page() {
             </nav>
 
             <div className="ml-auto flex items-center gap-2">
-              {/* Toggle Moon/Sun */}
               <button
                 onClick={() => setIsDark((d) => !d)}
                 className="rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900"
@@ -251,7 +246,6 @@ export default function Page() {
               >
                 {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </button>
-
               <button className="rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900" aria-label="Help">
                 <HelpCircle className="h-5 w-5" />
               </button>
@@ -261,10 +255,7 @@ export default function Page() {
               <button className="rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900" aria-label="Notifications">
                 <Bell className="h-5 w-5" />
               </button>
-              <button
-                className="rounded-full bg-zinc-900 px-3 py-1.5 text-sm text-white hover:opacity-90 dark:bg-zinc-100 dark:text-zinc-900"
-                aria-label="Add Event"
-              >
+              <button className="rounded-full bg-zinc-900 px-3 py-1.5 text-sm text-white hover:opacity-90 dark:bg-zinc-100 dark:text-zinc-900" aria-label="Add Event">
                 <Plus className="mr-1 inline h-4 w-4" /> Add Event
               </button>
               <div className="ml-1 h-8 w-8 overflow-hidden rounded-full bg-zinc-200" />
@@ -284,10 +275,10 @@ export default function Page() {
                     <Calendar className="h-4 w-4" />
                     <span>Agenda</span>
                   </a>
-                  <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
+                  <Link href="/shows" className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900">
                     <MapPin className="h-4 w-4" />
                     <span>Tours & Shows</span>
-                  </a>
+                  </Link>
                   <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
                     <Users className="h-4 w-4" />
                     <span>Contacts</span>
@@ -314,7 +305,6 @@ export default function Page() {
             <section className="mb-8">
               <h2 className="mb-1 text-2xl font-semibold">Shows</h2>
               <p className="mb-4 text-sm text-zinc-500">Scheduled performances and gigs</p>
-
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {SHOWS.map((s) => (
                   <FlipCard
@@ -374,7 +364,6 @@ export default function Page() {
           </main>
         </div>
 
-        {/* Slideover por query (?show=slug) */}
         {active &&
           (() => {
             const s = SHOWS.find((x) => x.slug === active);
