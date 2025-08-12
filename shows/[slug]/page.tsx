@@ -1,1 +1,0 @@
-// app/shows/[slug]/page.tsx - unchanged
