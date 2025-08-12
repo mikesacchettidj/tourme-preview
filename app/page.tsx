@@ -179,13 +179,12 @@ function ShowPanel({ show, onClose }: { show: Show; onClose: () => void }) {
 }
 
 export default function Page() {
-  // 🔘 Toggle Moon/Sun — dark (Graphite) por defecto
+  // Toggle Moon/Sun — dark (Graphite) por defecto
   const [isDark, setIsDark] = useState(true);
 
-  // (Opcional) slideover por query ?show=slug
+  // Slideover por query ?show=slug
   const [active, setActive] = useState<string | null>(null);
 
-  // Aplicar clase a <html> para graphite / light
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove("theme-graphite", "theme-deep");
@@ -196,7 +195,6 @@ export default function Page() {
     }
   }, [isDark]);
 
-  // Leer ?show= de la URL para abrir slideover
   useEffect(() => {
     const update = () => {
       const p = new URLSearchParams(window.location.search);
@@ -224,22 +222,34 @@ export default function Page() {
             <div className="font-black tracking-tight text-xl">TOUR.ME</div>
 
             <nav className="mx-4 hidden items-center gap-1 rounded-full bg-zinc-100 p-1 dark:bg-zinc-900 md:flex">
-              <button className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800">
+              <a
+                href="/"
+                className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800"
+              >
                 <LayoutDashboard className="h-4 w-4" />
                 <span>Dashboard</span>
-              </button>
-              <button className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800">
+              </a>
+              <a
+                href="/calendar"
+                className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800"
+              >
                 <Calendar className="h-4 w-4" />
                 <span>Calendar</span>
-              </button>
-              <button className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800">
+              </a>
+              <a
+                href="/shows"
+                className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800"
+              >
                 <Folder className="h-4 w-4" />
-                <span>Files</span>
-              </button>
-              <button className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800">
+                <span>Shows</span>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-white hover:shadow dark:hover:bg-zinc-800"
+              >
                 <BarChart3 className="h-4 w-4" />
                 <span>Insights</span>
-              </button>
+              </a>
             </nav>
 
             <div className="ml-auto flex items-center gap-2">
@@ -253,134 +263,4 @@ export default function Page() {
               </button>
 
               <button className="rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900" aria-label="Help">
-                <HelpCircle className="h-5 w-5" />
-              </button>
-              <button className="rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900" aria-label="Settings">
-                <Settings className="h-5 w-5" />
-              </button>
-              <button className="rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900" aria-label="Notifications">
-                <Bell className="h-5 w-5" />
-              </button>
-              <button
-                className="rounded-full bg-zinc-900 px-3 py-1.5 text-sm text-white hover:opacity-90 dark:bg-zinc-100 dark:text-zinc-900"
-                aria-label="Add Event"
-              >
-                <Plus className="mr-1 inline h-4 w-4" /> Add Event
-              </button>
-              <div className="ml-1 h-8 w-8 overflow-hidden rounded-full bg-zinc-200" />
-            </div>
-          </div>
-        </header>
-
-        {/* Body */}
-        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 py-6">
-          {/* Sidebar */}
-          <aside className="col-span-12 md:col-span-3 lg:col-span-2">
-            <div className="sticky top-[68px] flex flex-col gap-6">
-              <div>
-                <div className="mb-2 text-xs uppercase tracking-wide text-zinc-500">Navigation</div>
-                <nav className="flex flex-col gap-1">
-                  <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
-                    <Calendar className="h-4 w-4" />
-                    <span>Agenda</span>
-                  </a>
-                  <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
-                    <MapPin className="h-4 w-4" />
-                    <span>Tours & Shows</span>
-                  </a>
-                  <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
-                    <Users className="h-4 w-4" />
-                    <span>Contacts</span>
-                  </a>
-                  <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
-                    <FileText className="h-4 w-4" />
-                    <span>Documents</span>
-                  </a>
-                  <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
-                    <Receipt className="h-4 w-4" />
-                    <span>Expenses</span>
-                  </a>
-                  <a className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900" href="#">
-                    <MessageSquare className="h-4 w-4" />
-                    <span>Chat</span>
-                  </a>
-                </nav>
-              </div>
-            </div>
-          </aside>
-
-          {/* Main */}
-          <main className="col-span-12 md:col-span-9 lg:col-span-10">
-            <section className="mb-8">
-              <h2 className="mb-1 text-2xl font-semibold">Shows</h2>
-              <p className="mb-4 text-sm text-zinc-500">Scheduled performances and gigs</p>
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {SHOWS.map((s) => (
-                  <FlipCard
-                    key={s.slug}
-                    front={
-                      <div className="flex h-full w-full flex-col justify-between rounded-xl">
-                        <div className="text-xl font-semibold">
-                          {s.name}
-                          <span className="ml-2 text-zinc-400">{s.date}</span>
-                        </div>
-                        <div className="text-sm text-zinc-500">
-                          @ {s.venue}
-                          <br />
-                          {s.city}
-                        </div>
-                      </div>
-                    }
-                    back={
-                      <div className="flex h-full w-full flex-col justify-between">
-                        <div>
-                          <div className="text-sm text-zinc-400">Details</div>
-                          <div className="mt-1 text-base">Doors 22:00 • Set 01:00–02:30</div>
-                          <div className="text-sm text-zinc-500">Soundcheck 20:00 • Contact: Alex (Promoter)</div>
-                        </div>
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="text-zinc-500">Status: {s.status ?? "—"}</span>
-                          <a
-                            href={`/shows/${s.slug}`}
-                            onClick={(e) => e.stopPropagation()}
-                            className="rounded-lg border border-zinc-300 px-2 py-1 text-xs hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
-                          >
-                            Open
-                          </a>
-                        </div>
-                      </div>
-                    }
-                  />
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <h2 className="mb-1 text-2xl font-semibold">People</h2>
-              <p className="mb-4 text-sm text-zinc-500">Artists, promoters, venues, tech crew and more</p>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {["Maria", "Petra", "Josh", "Patrizia", "Jason", "Damian"].map((name, i) => (
-                  <div key={i} className="rounded-2xl border card-surface border-zinc-200 p-3 dark:border-zinc-800">
-                    <div className="h-24 w-full rounded-xl bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700" />
-                    <div className="mt-2 text-sm font-medium">{name}</div>
-                    <div className="text-xs text-zinc-500">
-                      {["Booker", "Event Manager", "Promoter", "Artist", "Event Manager", "Tech"][i]}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </main>
-        </div>
-
-        {/* Slideover por query (?show=slug) */}
-        {active &&
-          (() => {
-            const s = SHOWS.find((x) => x.slug === active);
-            return s ? <ShowPanel show={s} onClose={close} /> : null;
-          })()}
-      </div>
-    </Suspense>
-  );
-}
+                <HelpCircle className="h-5 w-
