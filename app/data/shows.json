@@ -1,0 +1,35 @@
+[
+  {
+    "id": "berlin-kitkat",
+    "title": "Live at KitKat",
+    "city": "Berlin",
+    "date": "2025-09-12",
+    "status": "Booked",
+    "fee": 1200,
+    "perDiem": 40,
+    "buyouts": 2,
+    "expenses": 350
+  },
+  {
+    "id": "amsterdam-de-marktkantine",
+    "title": "DJ Set @ De Marktkantine",
+    "city": "Amsterdam",
+    "date": "2025-10-03",
+    "status": "In Progress",
+    "fee": 900,
+    "perDiem": 35,
+    "buyouts": 0,
+    "expenses": 180
+  },
+  {
+    "id": "paris-badaboom",
+    "title": "Badaboom Night",
+    "city": "Paris",
+    "date": "2025-11-20",
+    "status": "Offer",
+    "fee": 800,
+    "perDiem": 40,
+    "buyouts": 1,
+    "expenses": 120
+  }
+]
